@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 2</title>
+  </head>
+  <body>
+    <h3 class="example" style="background-color: aqua; color: yellowgreen">
+      This is the first paragraph with class "example".
+    </h3>
+    <p>This is another paragraph.</p>
+    <a href="">Link with target attribute</a>
+    <p>
+      <button type="button" class="btn btn-secondary" onclick="Change()">
+        Change
+      </button>
+    </p>
+  </body>
+  <script>
+    function Change() {
+      const title = document.querySelector(".example");
+      const a = document.querySelector("a");
+      title.style.color = "blue";
+      title.style.backgroundColor = "yellow";
+      title.style.frontsizr = " 50 px";
+      a.style.border = "1px red solid";
+    }
+  </script>
+</html>

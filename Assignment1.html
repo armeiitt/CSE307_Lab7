@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 1</title>
+  </head>
+  <style>
+    .example {
+    }
+  </style>
+  <body>
+    <h2>Problem 1. Replace all href values</h2>
+
+    <div><a class="example" href="">Website 1</a></div>
+    <div><a class="example" href="">Website 2</a></div>
+    <div><a class="example" href="">Website 3</a></div>
+
+    <script>
+      const nodeList = document.querySelectorAll(".example");
+      for (i = 0; i < nodeList.length; i++) {
+        nodeList[i].href = "https://www.w3schools.com/js/default.asp";
+      }
+    </script>
+  </body>
+</html>

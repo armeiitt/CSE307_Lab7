@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 3</title>
+  </head>
+  <style>
+    .example {
+      border: 1px solid black;
+      background-color: aqua;
+      padding: 5px;
+    }
+    .title {
+      color: blueviolet;
+    }
+  </style>
+  <body>
+    <p class="example">This is the first paragraph with class "example".</p>
+    <p class="example">Another paragraph with class "example".</p>
+    <p>This is a regular paragraph.</p>
+    <a href="">Link with target attribute</a>
+    <p><a href="">Another link with target attribute</a></p>
+    <h3 class="title">Title 1</h3>
+    <h5 class="title">Title 2</h5>
+    <button onclick="Change()">Change</button>
+    <script>
+      function Change() {
+        const p = document.querySelectorAll(".example");
+        const p2 = document.querySelector(".example");
+        const a = document.querySelectorAll("a");
+        const title = document.querySelectorAll(".title");
+        for (let i = 0; i < p.length; i++) {
+          p[i].style.border = "2px solid green";
+        }
+        p2.style.backgroundColor = "yellow";
+
+        for (let i = 0; i < a.length; i++) {
+          a[i].style.border = "solid 2px red";
+        }
+        for (let i = 0; i < title.length; i++) {
+          title[i].style.color = "orange";
+        }
+      }
+    </script>
+  </body>
+</html>
