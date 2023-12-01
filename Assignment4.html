@@ -3,110 +3,122 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallery</title>
+    <title>Document</title>
     <style>
-      .container {
-        flex: 1;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
+      * {
+        border: none;
+        margin: 0;
+        padding: 0;
       }
 
-      .listContainer {
-        padding: 40px;
-        flex: 1;
-        text-align: center;
+      body {
+        color: black;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .products {
         display: flex;
         flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        justify-content: space-between;
         align-items: center;
+        margin-bottom: 45px;
+      }
+
+      .products > div {
+        flex: 0 0 calc(25% - 10px);
+        box-sizing: border-box;
+      }
+
+      .products img {
+        height: 550px;
+        width: 100%;
+        transition: 0.25s ease-in-out;
+      }
+
+      .products img:hover {
+        transform: scale(1.15);
+      }
+
+      #expand > i {
+        cursor: pointer;
+        visibility: hidden;
+      }
+
+      .expand {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        width: 100%;
       }
 
-      .product {
-        padding: 20px;
-      }
-
-      .container img:hover {
-        width: 300px;
-        height: 300px;
-      }
-      #imgtext {
-        font-size: 70px;
-        font-weight: bold;
+      .expand > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
       }
     </style>
-
-    <script>
-      function ExapandImg(imgs) {
-        var expandImg = document.getElementById("expandedImg");
-        var imgText = document.getElementById("imgtext");
-        expandImg.src = imgs.src;
-        imgText.innerHTML = imgs.alt;
-        expandImg.parentElement.style.display = "block";
-      }
-    </script>
   </head>
 
   <body>
-    <div class="container" style="background-color: aquamarine">
-      <h1>Tabbed Image Gallery</h1>
-      <p>Click on the images below:</p>
-      <div class="listContainer">
-        <div class="product">
-          <img
-            width="250"
-            height="250"
-            src="./img_Practice3/Davinci.png"
-            alt="Davinci"
-            onclick="ExapandImg(this)"
-          />
+    <div class="container">
+      <div style="text-align: center; padding: 25px 0 25px 0">
+        <h1>Tabbed Image Gallery</h1>
+        <p>Click on the images below:</p>
+      </div>
+      <div class="products">
+        <div>
+          <img src="./img_Practice3/Davinci.png" alt="Davinci" />
         </div>
-
-        <div class="product">
-          <img
-            width="250"
-            height="250"
-            src="./img_Practice3/EnglishForTech.jpg"
-            alt="EnglishForTech"
-            onclick="ExapandImg(this)"
-          />
+        <div>
+          <img src="./img_Practice3/EnglishForTech.jpg" alt="EnglishForTech" />
         </div>
-
-        <div class="product">
-          <img
-            width="250"
-            height="250"
-            src="./img_Practice3/harrypotter.png"
-            alt="harrypotter"
-            onclick="ExapandImg(this)"
-          />
+        <div>
+          <img src="./img_Practice3/harrypotter.png" alt="harrypotter" />
         </div>
-        <div class="product">
-          <img
-            width="250"
-            height="250"
-            src="./img_Practice3/Tinhoccoban.png"
-            alt="TinHocCoBan"
-            onclick="ExapandImg(this)"
-          />
+        <div>
+          <img src="./img_Practice3/Tinhoccoban.png" alt="TinHocCoBan" />
+        </div>
+      </div>
+      <div class="expand">
+        <div id="expand">
+          <!-- //dau x -->
+          <i class="btn-close" onclick="this.parentElement.style.display='none'"
+            >&times;</i
+          >
+          <!-- ten hinh -->
+          <div id="img-alt"></div>
+          <!-- hinh -->
+          <div style="height: 1200px; width: 670px">
+            <img id="img-src" style="width: 100%" />
+          </div>
         </div>
       </div>
     </div>
+    <script>
+      //tao 1 bien de lay the co id la img-alt
+      const imgAlt = document.getElementById("img-alt");
+      const imgSrc = document.getElementById("img-src");
+      const expandId = document.getElementById("expand");
+      //Attrs: Attribute: trong class Products co nhung images nao thi lay het
+      const imgAttrs = document.querySelectorAll(".products img");
 
-    <div class="listContainer">
-      <span
-        style="
-          position: fixed;
-          color: red;
-          font-size: 35px;
-          right: 15px;
-          cursor: pointer;
-        "
-        onclick="this.parentElement.style.display='none'"
-        >&times;</span
-      >
-      <div id="imgtext"></div>
-      <img id="expandedImg" style="width: 200" />
-    </div>
+      imgAttrs.forEach((imgAttr) => {
+        imgAttr.addEventListener("click", () => {
+          if ((expandId.style.display = "none")) {
+            expandId.style.display = "flex";
+            document.querySelector("i.btn-close").style.visibility = "inherit";
+          }
+          imgAlt.innerHTML = `${imgAttr.alt}`;
+          imgSrc.src = imgAttr.src;
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User management</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody id="users"></tbody>
+    </table>
+
+    <script>
+      const usersContainer = document.getElementById("users");
+
+      const htmlElement = (data) => {
+        return `      <tr>
+          <td>${data.email}</td>
+          <td>${data.username}</td>
+          <td><input type="password" value="${data.password}"></input></td>
+          <td>${data.name.firstname}</td>
+          <td>${data.name.lastname}</td>
+          <td>${data.phone}</td>
+          <td>${data.address.number} ${data.address.street}, ${data.address.city}</td>
+        </tr>`;
+      };
+
+      const renderData = (data) => {
+        // Use map to transform each element of the array
+        const renderedElements = data
+          .map((element) => {
+            return htmlElement(element);
+          })
+          .join(""); // Use join to concatenate the array of HTML strings
+        usersContainer.innerHTML = renderedElements;
+      };
+
+      async function getData() {
+        try {
+          const url = "https://fakestoreapi.com/users";
+          const { data } = await axios.get(url);
+          renderData(data);
+        } catch (error) {
+          usersContainer.innerHTML = "Lay du lieu khong thanh cong";
+        }
+      }
+      getData();
+    </script>
+  </body>
+</html>

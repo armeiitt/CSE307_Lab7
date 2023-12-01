@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Registration form</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      form {
+        width: 60%;
+      }
+
+      .input_full {
+        width: 100%;
+      }
+
+      .flex-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .flex-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .flex-center {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="flex-container">
+        <label for="fullname"><b>Fullname*</b></label>
+        <input id="fullname" class="input_full" type="text" required />
+
+        <label for="email"><b>Email*</b></label>
+        <input id="email" class="input_full" type="email" required />
+
+        <label for="password"><b>Password*</b></label>
+        <input id="password" class="input_full" type="password" required />
+
+        <label for="confirm_password"><b>Confirm Password*</b></label>
+        <input
+          id="confirm_password"
+          class="input_full"
+          type="password"
+          required
+        />
+
+        <label for="phone"><b>Phone Number*</b></label>
+        <input id="phone" class="input_full" type="number" required />
+
+        <label for="address"><b>Address</b></label>
+        <textarea id="address" name="address" cols="50" rows="5"></textarea>
+
+        <div class="flex-row">
+          <div>
+            <label for="city"><b>City</b></label>
+            <input id="city" type="text" placeholder="Enter your City" />
+          </div>
+          <div>
+            <label for="state"><b>State</b></label>
+            <input id="state" type="text" placeholder="Enter your State" />
+          </div>
+        </div>
+
+        <label for="zip_code"><b>Zip/Postal Code</b></label>
+        <input
+          id="zip_code"
+          class="input_full"
+          type="text"
+          placeholder="Enter your Zip/Postal Code"
+        />
+
+        <label for="country"><b>Country</b></label>
+        <select id="country">
+          <option>[Select your country]</option>
+          <option>Viet Nam</option>
+          <option>USA</option>
+          <option>Korea</option>
+        </select>
+
+        <label for="birthday"><b>Birthday</b></label>
+        <input id="birthday" type="date" />
+
+        <label for="gender"><b>Gender</b></label>
+        <select id="gender">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+
+        <label for="starting_date"><b>Starting date</b></label>
+        <div class="flex-row">
+          <input type="radio" id="spring" name="starting_date" />
+          <label for="spring">Spring</label>
+          <input type="radio" id="summer" name="starting_date" />
+          <label for="summer">Summer</label>
+        </div>
+
+        <label for="comments"><b>Comments</b></label>
+        <textarea
+          id="comments"
+          name="comments"
+          cols="50"
+          rows="5"
+          placeholder="Please send us more information"
+        ></textarea>
+
+        <div class="flex-center">
+          <input onclick="abcxyz()" />
+        </div>
+      </div>
+    </form>
+    <script>
+      // Get elements by their IDs
+      const fullnameInput = document.getElementById("fullname");
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const confirmPasswordInput = document.getElementById("confirm_password");
+      const phoneInput = document.getElementById("phone");
+      const addressTextarea = document.getElementById("address");
+      const cityInput = document.getElementById("city");
+      const stateInput = document.getElementById("state");
+      const zipCodeInput = document.getElementById("zip_code");
+      const countrySelect = document.getElementById("country");
+      const birthdayInput = document.getElementById("birthday");
+      const genderSelect = document.getElementById("gender");
+      const springRadio = document.getElementById("spring");
+      const summerRadio = document.getElementById("summer");
+      const commentsTextarea = document.getElementById("comments");
+      const submitButton = document.getElementById("submitButton");
+      function abcxyz() {
+        if (passwordInput.value.length < 6) {
+          console.log("Dit me nhap hon 6 so");
+        }
+      }
+    </script>
+  </body>
+</html>
